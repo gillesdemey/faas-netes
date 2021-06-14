@@ -39,6 +39,8 @@ type FunctionSpec struct {
 	Requests *FunctionResources `json:"requests,omitempty"`
 	// +optional
 	ReadOnlyRootFilesystem bool `json:"readOnlyRootFilesystem"`
+	// +optional
+	AutomountServiceAccountToken bool `json:"automountServiceAccountToken"`
 }
 
 // FunctionResources is used to set CPU and memory limits and requests

@@ -2,6 +2,8 @@ module github.com/openfaas/faas-netes
 
 go 1.15
 
+replace github.com/openfaas/faas-provider => /Users/gilles/waylay/faas-provider
+
 require (
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/google/go-cmp v0.5.6

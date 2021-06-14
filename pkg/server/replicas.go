@@ -130,16 +130,17 @@ func toFunctionStatus(item ofv1.Function) types.FunctionStatus {
 	status := types.FunctionStatus{
 		// AvailableReplicas: availableReplicas,
 		// Replicas:          desiredReplicas,
-		Labels:                 item.Spec.Labels,
-		Annotations:            item.Spec.Annotations,
-		Name:                   item.Spec.Name,
-		EnvProcess:             item.Spec.Handler,
-		Image:                  item.Spec.Image,
-		Namespace:              item.Namespace,
-		Secrets:                item.Spec.Secrets,
-		Constraints:            item.Spec.Constraints,
-		ReadOnlyRootFilesystem: item.Spec.ReadOnlyRootFilesystem,
-		CreatedAt:              item.CreationTimestamp.Time,
+		Labels:                       item.Spec.Labels,
+		Annotations:                  item.Spec.Annotations,
+		Name:                         item.Spec.Name,
+		EnvProcess:                   item.Spec.Handler,
+		Image:                        item.Spec.Image,
+		Namespace:                    item.Namespace,
+		Secrets:                      item.Spec.Secrets,
+		Constraints:                  item.Spec.Constraints,
+		ReadOnlyRootFilesystem:       item.Spec.ReadOnlyRootFilesystem,
+		AutomountServiceAccountToken: item.Spec.AutomountServiceAccountToken,
+		CreatedAt:                    item.CreationTimestamp.Time,
 	}
 
 	if item.Spec.Environment != nil {

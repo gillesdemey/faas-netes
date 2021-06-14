@@ -23,7 +23,8 @@ func Test_newDeployment(t *testing.T) {
 				"com.openfaas.health.http.initialDelay": "2m",
 				"com.openfaas.health.http.path":         "/healthz",
 			},
-			ReadOnlyRootFilesystem: true,
+			ReadOnlyRootFilesystem:       true,
+			AutomountServiceAccountToken: false,
 		},
 	}
 
@@ -69,6 +70,11 @@ func Test_newDeployment(t *testing.T) {
 
 	if *(deployment.Spec.Template.Spec.Containers[0].SecurityContext.RunAsUser) != k8s.SecurityContextUserID {
 		t.Errorf("RunAsUser should be %v", k8s.SecurityContextUserID)
+		t.Fail()
+	}
+
+	if *(deployment.Spec.Template.Spec.AutomountServiceAccountToken) == true {
+		t.Errorf("AutomountServiceAccountToken should be false")
 		t.Fail()
 	}
 }

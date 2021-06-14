@@ -234,9 +234,10 @@ func makeDeploymentSpec(request types.FunctionDeployment, existingSecrets map[st
 							},
 						},
 					},
-					ServiceAccountName: serviceAccount,
-					RestartPolicy:      corev1.RestartPolicyAlways,
-					DNSPolicy:          corev1.DNSClusterFirst,
+					ServiceAccountName:           serviceAccount,
+					AutomountServiceAccountToken: &request.ReadOnlyRootFilesystem,
+					RestartPolicy:                corev1.RestartPolicyAlways,
+					DNSPolicy:                    corev1.DNSClusterFirst,
 					// EnableServiceLinks injects ENV vars about every other service within
 					// the namespace.
 					EnableServiceLinks: &enableServiceLinks,

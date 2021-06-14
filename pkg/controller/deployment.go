@@ -117,6 +117,7 @@ func newDeployment(
 							},
 						},
 					},
+					AutomountServiceAccountToken: &function.Spec.AutomountServiceAccountToken,
 				},
 			},
 		},

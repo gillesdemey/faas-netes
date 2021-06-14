@@ -88,16 +88,17 @@ func makeApplyHandler(defaultNamespace string, client clientset.Interface) http.
 
 func toFunctionSpec(req types.FunctionDeployment) faasv1.FunctionSpec {
 	spec := faasv1.FunctionSpec{
-		Name:                   req.Service,
-		Image:                  req.Image,
-		Handler:                req.EnvProcess,
-		Labels:                 req.Labels,
-		Annotations:            req.Annotations,
-		Constraints:            req.Constraints,
-		Secrets:                req.Secrets,
-		Limits:                 getResources(req.Limits),
-		Requests:               getResources(req.Requests),
-		ReadOnlyRootFilesystem: req.ReadOnlyRootFilesystem,
+		Name:                         req.Service,
+		Image:                        req.Image,
+		Handler:                      req.EnvProcess,
+		Labels:                       req.Labels,
+		Annotations:                  req.Annotations,
+		Constraints:                  req.Constraints,
+		Secrets:                      req.Secrets,
+		Limits:                       getResources(req.Limits),
+		Requests:                     getResources(req.Requests),
+		ReadOnlyRootFilesystem:       req.ReadOnlyRootFilesystem,
+		AutomountServiceAccountToken: req.ReadOnlyRootFilesystem,
 	}
 
 	if req.EnvVars != nil {

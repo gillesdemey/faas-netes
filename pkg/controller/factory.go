@@ -32,16 +32,17 @@ func functionToFunctionRequest(in *faasv1.Function) types.FunctionDeployment {
 	}
 	lim, req := functionToFunctionResources(in)
 	return types.FunctionDeployment{
-		Annotations:            in.Spec.Annotations,
-		Service:                in.Name,
-		Labels:                 &in.Labels,
-		Constraints:            in.Spec.Constraints,
-		EnvProcess:             in.Spec.Handler,
-		EnvVars:                env,
-		Image:                  in.Spec.Image,
-		Limits:                 lim,
-		Requests:               req,
-		ReadOnlyRootFilesystem: in.Spec.ReadOnlyRootFilesystem,
+		Annotations:                  in.Spec.Annotations,
+		Service:                      in.Name,
+		Labels:                       &in.Labels,
+		Constraints:                  in.Spec.Constraints,
+		EnvProcess:                   in.Spec.Handler,
+		EnvVars:                      env,
+		Image:                        in.Spec.Image,
+		Limits:                       lim,
+		Requests:                     req,
+		ReadOnlyRootFilesystem:       in.Spec.ReadOnlyRootFilesystem,
+		AutomountServiceAccountToken: in.Spec.AutomountServiceAccountToken,
 	}
 }
 
